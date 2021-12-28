@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:student_grade_predection/enter_marks.dart';
 import 'package:student_grade_predection/welcomepage.dart';
 

@@ -4,7 +4,6 @@ import 'package:student_grade_predection/constanst.dart';
 import 'package:student_grade_predection/finalwidget.dart';
 import 'components/custom_text_field.dart';
 
-// import 'dart:convert' as convert;
 class StudentMarks extends StatefulWidget {
   const StudentMarks({Key? key}) : super(key: key);
   static const String routename = '/studentmarks';
@@ -341,28 +340,12 @@ class StudentMarksState extends State<StudentMarks> {
                             color: Colors.white))),
                 onPressed: () async {
                   setState(() {
-                     String patttern = r'^[a-z A-Z,.\-]+$';
-                    if (
-                      RegExp(r'^[0-9]$').hasMatch(m1) && 
-                      RegExp(r'^[0-9]$').hasMatch(m2) && 
-                      RegExp(r'^[0-9]$').hasMatch(m3) && 
-                      RegExp(r'^[0-9]$').hasMatch(m4) && 
-                      RegExp(r'^[0-9]$').hasMatch(m5) && 
-                      m1 != "" &&
-                        m2 != "" &&
-                        m3 != "" &&
-                        m4 != "" &&
-                        m5 != "" &&
-                        double.parse(m1) <= 10 &&
-                        double.parse(m1) > 0 &&
-                        double.parse(m2) <= 10 &&
-                        double.parse(m2) > 0 &&
-                        double.parse(m3) <= 10 &&
-                        double.parse(m3) > 0 &&
-                        double.parse(m4) <= 10 &&
-                        double.parse(m4) > 0 &&
-                        double.parse(m5) <= 10 &&
-                        double.parse(m5) > 0) {
+                    String patttern = r'^[a-z A-Z,.\-]+$';
+                    if (isNumeric(m1) &&
+                        isNumeric(m2) &&
+                        isNumeric(m3) &&
+                        isNumeric(m4) &&
+                        isNumeric(m5)) {
                       proceed = true;
                       url = url +
                           attendance! +
@@ -379,15 +362,72 @@ class StudentMarksState extends State<StudentMarks> {
                           ',' +
                           m5;
                       print(url);
+                      print(
+                          m1 + " " + m2 + " " + m3 + " " + m4 + " " + m5 + " ");
                     } else {
                       print("Error");
                       error = "Enter valid marks";
                     }
+                    // if (
+                    //     // RegExp(r'^[0-9]$').hasMatch(m1) &&
+                    //     // RegExp(r'^[0-9]$').hasMatch(m2) &&
+                    //     // RegExp(r'^[0-9]$').hasMatch(m3) &&
+                    //     // RegExp(r'^[0-9]$').hasMatch(m4) &&
+                    //     // RegExp(r'^[0-9]$').hasMatch(m5) &&
+                    //     RegExp("[0-9.-]").hasMatch(m1) &&
+                    //         RegExp("[0-9.-]").hasMatch(m2) &&
+                    //         RegExp("[0-9.-]").hasMatch(m3) &&
+                    //         RegExp("[0-9.-]").hasMatch(m4) &&
+                    //         RegExp("[0-9.-]").hasMatch(m5) &&
+                    //         m1 != "" &&
+                    //         m2 != "" &&
+                    //         m3 != "" &&
+                    //         m4 != "" &&
+                    //         m5 != "" &&
+                    //         double.parse(m1) <= 10 &&
+                    //         double.parse(m1) > 0 &&
+                    //         double.parse(m2) <= 10 &&
+                    //         double.parse(m2) > 0 &&
+                    //         double.parse(m3) <= 10 &&
+                    //         double.parse(m3) > 0 &&
+                    //         double.parse(m4) <= 10 &&
+                    //         double.parse(m4) > 0 &&
+                    //         double.parse(m5) <= 10 &&
+                    //         double.parse(m5) > 0) {
+                    //   proceed = true;
+                    //   url = url +
+                    //       attendance! +
+                    //       ',' +
+                    //       studyhours! +
+                    //       ',' +
+                    //       m1 +
+                    //       ',' +
+                    //       m2 +
+                    //       ',' +
+                    //       m3 +
+                    //       ',' +
+                    //       m4 +
+                    //       ',' +
+                    //       m5;
+                    //   print(url);
+                    //   print(
+                    //       m1 + " " + m2 + " " + m3 + " " + m4 + " " + m5 + " ");
+                    // } else {
+                    //   print("Error");
+                    //   error = "Enter valid marks";
+                    // }
                   });
                 }),
           ),
         ],
       ),
     );
+  }
+
+  bool isNumeric(String s) {
+    if (s == null) {
+      return false;
+    }
+    return double.tryParse(s) != null;
   }
 }

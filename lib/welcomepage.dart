@@ -48,7 +48,6 @@ class _WelcomePageState extends State<WelcomePage> {
       },
       child: Scaffold(
           // backgroundColor: Color.fromRGBO(93, 185, 83,1),
-
           body: size.width > 1160 || size.height > 647
               ? Stack(
                   fit: StackFit.expand,
@@ -464,7 +463,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                           });
                                         },
                                       ),
-                                      Radio<Attendance>(
+                                      Radio(
                                         value: Attendance.five,
                                         activeColor: Colors.lightGreen,
                                         groupValue: attendance_radio,
@@ -474,7 +473,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                             attendance = "5";
                                           });
                                         },
-                                      ),
+                                      )
                                     ],
                                   ),
 
@@ -629,7 +628,8 @@ class _WelcomePageState extends State<WelcomePage> {
                                   EdgeInsets.only(top: size.height * 0.02)),
                           Text(
                             error,
-                            style: GoogleFonts.roboto(color: Colors.red,fontWeight: FontWeight.bold),
+                            style: GoogleFonts.roboto(
+                                color: Colors.red, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
                             height: size.height * 0.044,
@@ -651,24 +651,23 @@ class _WelcomePageState extends State<WelcomePage> {
                                             color: Colors.white))),
                                 onPressed: () {
                                   setState(() {
-                                  
-                                       //Roll validation
+                                    //Roll validation
                                     error = RollValidate(roll);
                                     print("Roll $error");
                                     //College name validation
                                     error = CollegeValidate(collegename);
                                     print("clg $error");
-                                      //Name validation check
+                                    //Name validation check
                                     error = fullNameValidate(fullname);
-                                   print("fullname $error");
-                                  if (error == "" &&
-                                            gender?.length != null &&
-                                            stream?.length != null &&
-                                            attendance?.length != null &&
-                                            studyhours?.length != null
+                                    print("fullname $error");
+                                    if (error == "" &&
+                                        gender?.length != null &&
+                                        stream?.length != null &&
+                                        attendance?.length != null &&
+                                        studyhours?.length != null
                                         // roll.startsWith(RegExp(r'[A-Z][a-z]'))
-                                        && RegExp(r'[0-9]').hasMatch(roll)
-                                        ) {
+                                        &&
+                                        RegExp(r'[0-9]').hasMatch(roll)) {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -709,14 +708,13 @@ class _WelcomePageState extends State<WelcomePage> {
     }
     // else if(!fullname.contains(RegExp(r'^\\s+$'))){
     // return 'Error';
-    
+
     // }
-     else if (!regExp.hasMatch(fullName)) {
+    else if (!regExp.hasMatch(fullName)) {
       return 'Error';
     }
-    
+
     return '';
-    
   }
 
   String CollegeValidate(String clgname) {

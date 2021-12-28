@@ -22,7 +22,6 @@ class _TotalMarksContainerState extends State<TotalMarksContainer> {
       var obj = jsonDecode(value);
       double marks = obj['prediction'];
       finalMarks = marks.toStringAsPrecision(3).toString();
-      print(finalMarks);
     });
     Future.delayed(const Duration(milliseconds: 1000), () {
 // Here you can write your code
