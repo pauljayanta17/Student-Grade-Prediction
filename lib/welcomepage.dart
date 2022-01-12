@@ -667,7 +667,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                         studyhours?.length != null
                                         // roll.startsWith(RegExp(r'[A-Z][a-z]'))
                                         &&
-                                        RegExp(r'[0-9]').hasMatch(roll)) {
+                                        isNumeric(roll)) {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -699,6 +699,15 @@ class _WelcomePageState extends State<WelcomePage> {
                 )),
     );
   }
+
+
+  bool isNumeric(String s) {
+    if (s == null) {
+      return false;
+    }
+    return int.tryParse(s) != null;
+  }
+
 
   String fullNameValidate(String fullName) {
     String patttern = r'^[a-z A-Z,.\-]+$';

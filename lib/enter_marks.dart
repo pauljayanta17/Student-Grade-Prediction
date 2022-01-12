@@ -345,7 +345,18 @@ class StudentMarksState extends State<StudentMarks> {
                         isNumeric(m2) &&
                         isNumeric(m3) &&
                         isNumeric(m4) &&
-                        isNumeric(m5)) {
+                        isNumeric(m5) &&
+                        double.parse(m1)>=2 &&
+                        double.parse(m2)>=2 &&
+                        double.parse(m3)>=2 &&
+                        double.parse(m4)>=2 &&
+                        double.parse(m5)>=2 &&
+                        double.parse(m1)<=10 &&
+                        double.parse(m2)<=10 &&
+                        double.parse(m3)<=10 &&
+                        double.parse(m4)<=10 &&
+                        double.parse(m5)<=10
+                        ) {
                       proceed = true;
                       url = url +
                           attendance! +
